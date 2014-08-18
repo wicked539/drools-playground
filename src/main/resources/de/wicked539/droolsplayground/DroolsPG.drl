@@ -1,0 +1,25 @@
+package de.wicked539.droolsplayground;
+import java.util.Random
+dialect  "mvel"
+
+rule "MoveX"
+    when
+        m : de.wicked539.droolsplayground.models.MyModel( posX > 0 && posX < 100 )
+    then
+        int step = (new Random().nextInt(3) - 1);
+        modify(m){
+            setPosX(m.getPosX() + step)
+        }
+        System.out.println("posX: " + m.getPosX());
+end
+
+rule "MoveY"
+    when
+        m : de.wicked539.droolsplayground.models.MyModel( posY > 0 && posY < 100 )
+    then
+        int step = (new Random().nextInt(3) - 1);
+        modify(m){
+            setPosY(m.getPosY() + step)
+        }
+        System.out.println("posY: " + m.getPosY());
+end
